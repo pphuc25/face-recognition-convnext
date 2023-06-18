@@ -130,7 +130,9 @@ def detect_face(img: Image, target_size=(240, 240), detection_threshold=0.85):
 
     detected_faces_images = []
     if len(detected_faces_attributes) == 0:
-        raise Exception("no faces found in the given photo")
+        # raise Exception("no faces found in the given photo")
+        return None
+
     for face_attributes in detected_faces_attributes:
         box, landmarks, score = face_attributes
         left_eye, right_eye = tuple(landmarks[0]), tuple(landmarks[1])
@@ -152,11 +154,11 @@ def detect_face(img: Image, target_size=(240, 240), detection_threshold=0.85):
 
 def download_detector_model_weights():
     url = "https://drive.google.com/u/1/uc?id=1a_FLk4TxX2NoKJsrP2h50XXE6_2Nm_A1&export=download"
-    weights_path = os.path.abspath("model_weights/final_weights/face_detector.pt")
+    weights_path = os.path.abspath("app/model/model_weights/final_weights/face_detector.pt")
     if not os.path.exists(weights_path):
-        if not os.path.exists(os.path.abspath("model_weights")):
-            os.mkdir(os.path.abspath("model_weights"))
-        if not os.path.exists(os.path.abspath("model_weights/final_weights")):
-            os.mkdir("model_weights/final_weights")
+        if not os.path.exists(os.path.abspath("app/model/model_weights")):
+            os.mkdir(os.path.abspath("app/model/model_weights"))
+        if not os.path.exists(os.path.abspath("app/model/model_weights/final_weights")):
+            os.mkdir("app/model/model_weights/final_weights")
         gdown.download(url, weights_path, quiet=False)
     return weights_path
