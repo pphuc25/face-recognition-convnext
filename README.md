@@ -15,6 +15,15 @@ For your information, Triplet loss is a loss function used in Machine Learning, 
     <i> Sample result </i>
 </p>
 
+## The database form
+List of each dictionary, the form like: 
+[
+    {
+        "name": person1, 
+        "face_feature": face_feature_person1
+    }
+]
+
 ## How to use my code
 With my code you can:
 - Train the model: In progress...
@@ -29,5 +38,11 @@ With my code you can:
 #### To training (In progress...)
 
 #### To inference
+*Note: You can use your custome  data by add its to list of dictionary and change with file databse.pickle in direction `data/database.pickle`*
 - run file run.sh by command `bash run.sh` (If you use Linux)
-- Open the IP in comamnd line
+- Open the server in your comamnd line
+
+
+
+## Reference
+I would like to express my graditude to @ahmedbadr97 for creating the increadible repository [conv-facenet](https://github.com/ahmedbadr97/conv-facenet), from which most of this code is derived. Thank you very much!
