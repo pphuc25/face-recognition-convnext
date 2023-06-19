@@ -5,6 +5,16 @@ This repo is python source for training and inference to recognite who is this p
 
 For your information, Triplet loss is a loss function used in Machine Learning, the goal of it is to learn an embedding space where similar instances are closer to each other, while dissimilar instances are farther apart. The loss funciton takes into account triplets of examples: an anchor, a positive example, and a negative example
 
+<!-- <p align="center">
+  <img src="demo/video-1.gif"><br/>
+  <i>Sample result</i>
+</p> -->
+
+<p align="center">
+    <img src="demo/demo-running-result.png", width="500"><br/>
+    <i> Sample result </i>
+</p>
+
 ## How to use my code
 With my code you can:
 - Train the model: In progress...
