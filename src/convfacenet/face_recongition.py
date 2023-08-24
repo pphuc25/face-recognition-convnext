@@ -2,8 +2,11 @@ import os
 import gdown as gdown
 import torch.cuda
 from torch import no_grad
-from .face_detection import *
-from .face_descriptor.models import FaceDescriptorModel
+
+import sys
+sys.path.append('/home/pphuc/Downloads/testing-code/Multi-Face-Recognize/Multi-Face-Recognize')
+from src.convfacenet.face_detection import *
+from src.convfacenet.face_descriptor.models import FaceDescriptorModel
 from torchvision import transforms
 
 
@@ -51,7 +54,7 @@ def faces_features(img: Image):
     return is_face, faces_features_list
 
 
-def verify_faces(face1_img, face2_img, threshold=0.4):
+def verify_faces(face1_img, face2_img, threshold=0.5):
     """
     verify that two faces are for same person
     :param face1_path: first picture path
@@ -70,11 +73,11 @@ def verify_faces(face1_img, face2_img, threshold=0.4):
 
 def load_descriptor_model_weights(model):
     url = "https://drive.google.com/u/1/uc?id=1sighXzyFufqurh4M4dqB4sNWcTA9PccO&export=download"
-    weights_path = os.path.abspath("app/model/model_weights/final_weights/face_descriptor.pt")
+    weights_path = "~/app/model/model_weights/final_weights/face_descriptor.pt"
     if not os.path.exists(weights_path):
-        if not os.path.exists(os.path.abspath("app/model/model_weights")):
-            os.mkdir(os.path.abspath("app/model/model_weights"))
-        if not os.path.exists(os.path.abspath("app/model/model_weights/final_weights")):
-            os.mkdir("app/model/model_weights/final_weights")
+        if not os.path.exists("~/app/model/model_weights"):
+            os.mkdir("~/app/model/model_weights")
+        if not os.path.exists("~/app/model/model_weights/final_weights"):
+            os.mkdir("~/app/model/model_weights/final_weights")
         gdown.download(url, weights_path, quiet=False)
     model.load_local_weights(weights_path, True)

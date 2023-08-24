@@ -3,11 +3,13 @@ import os
 import cv2
 import gdown
 
-from . import utils
+import sys
+sys.path.append('/Users/user/PycharmProjects/FPT code/2023/Summer2023/DPL302m/Multi-Face-Recognize/src')
+from convfacenet import utils
 import numpy as np
 from PIL import Image
 import math
-from .face_detector import RetinaFace
+from convfacenet.face_detector.detector import RetinaFace
 import torch
 
 
@@ -151,14 +153,13 @@ def detect_face(img: Image, target_size=(240, 240), detection_threshold=0.85):
 
     return detected_faces_images
 
-
 def download_detector_model_weights():
     url = "https://drive.google.com/u/1/uc?id=1a_FLk4TxX2NoKJsrP2h50XXE6_2Nm_A1&export=download"
-    weights_path = os.path.abspath("app/model/model_weights/final_weights/face_detector.pt")
+    weights_path = '~/app/model/model_weights/final_weights/face_detector.pt'
     if not os.path.exists(weights_path):
-        if not os.path.exists(os.path.abspath("app/model/model_weights")):
-            os.mkdir(os.path.abspath("app/model/model_weights"))
-        if not os.path.exists(os.path.abspath("app/model/model_weights/final_weights")):
-            os.mkdir("app/model/model_weights/final_weights")
+        if not os.path.exists("~/app/model/model_weights"):
+            os.mkdir("~/app/model/model_weights")
+        if not os.path.exists("~/app/model/model_weights/final_weights"):
+            os.mkdir("~/app/model/model_weights/final_weights")
         gdown.download(url, weights_path, quiet=False)
     return weights_path

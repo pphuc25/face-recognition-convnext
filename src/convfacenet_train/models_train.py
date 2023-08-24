@@ -237,3 +237,4 @@ def pair_test_step(model, loss_function, face_x, face_y, label, cuda):
     predicted_result = model(face_x, face_y)
     loss = loss_function(predicted_result, label)
     return float(loss)
+

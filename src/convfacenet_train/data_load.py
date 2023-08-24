@@ -9,7 +9,9 @@ from PIL import Image
 import torch
 from torch.utils.data import  IterableDataset
 from torchvision.transforms.functional import normalize
-from . import utils
+import sys
+sys.path.append('/Users/user/PycharmProjects/FPT code/2023/Summer2023/DPL302m/Multi-Face-Recognize/src/convfacenet_train')  # Add the directory to the module search path
+from convfacenet_train import utils
 
 
 def load_image(path, transform=None, expand=False):
