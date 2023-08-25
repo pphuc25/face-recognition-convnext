@@ -4,12 +4,12 @@
 
 
 ## Introduction
-This repository contains Python source code designed for both training and inference tasks related to person identification. During the training process, we utilize a feature extractor to obtain vectors, which are then compared with our database using a webcam.
+This repository contains Python source code designed for both inference tasks related to person identification. During the training process, we utilize a feature extractor to obtain vectors, which are then compared with our database using a webcam.
 
-To provide context, the Triplet loss serves as a significant aspect in Machine Learning. Its objective is to facilitate the learning of an embedding space where similar instances are positioned closer to each other, while dissimilar instances are placed farther apart. This loss function involves triplets of examples: an anchor, a positive example, and a negative example.
+To provide context, the [Triplet loss](https://en.wikipedia.org/wiki/Triplet_loss) serves as a significant aspect in Machine Learning. Its objective is to facilitate the learning of an embedding space where similar instances are positioned closer to each other, while dissimilar instances are placed farther apart. This loss function involves triplets of examples: an anchor, a positive example, and a negative example.
 
 <p align="center">
-    <img src="image_demo/demo-running-result.png", width="500"><br/>
+    <img src="demo/demo-running-result.png", width="500"><br/>
     <i> Sample result </i>
 </p>
 
@@ -18,7 +18,7 @@ Database structure is a list contain many dictionaries, the format be like:
 ```
 [
     {
-        "name": person1,
+        "name": person1 name,
         "face_feature": face feature person1 embedding
     }
 ]
