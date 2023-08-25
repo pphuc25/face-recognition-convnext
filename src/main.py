@@ -1,8 +1,7 @@
 from flask import Flask, render_template, Response
-from scipy.spatial import distance
 import numpy as np
 import cv2
-from model.model import predict_pipeline
+from model import predict_pipeline
 
 app = Flask(__name__)
 

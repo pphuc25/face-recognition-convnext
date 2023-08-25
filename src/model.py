@@ -1,4 +1,3 @@
-from flask import Flask, render_template, Response
 import sys
 import convfacenet
 import pickle
@@ -8,22 +7,24 @@ import cv2
 from PIL import Image
 import os
 
+from manipulate_data import InputData
 
-current_dir = os.getcwd()
-dir_code = 'src'
-data_dir = 'data/database.pickle'
 
-code_path = os.path.join(current_dir, dir_code)
-sys.path.append(code_path)  # Add the directory to the module search path
-data_path = os.path.join(current_dir, data_dir)
+# current_dir = os.getcwd()
+# dir_code = 'src'
+# data_dir = 'data/database.pickle'
+
+# code_path = os.path.join(current_dir, dir_code)
+# sys.path.append(code_path)  # Add the directory to the module search path
+# data_path = os.path.join(current_dir, data_dir)
 
 
 __version__ = "0.1.0"
 
 
-with open(data_path, 'rb') as file:
-    serialized_data = file.read()
-database = pickle.loads(serialized_data)
+config = InputData.load_config()
+database = InputData.load_database(config)
+
 
 def predict_pipeline(frame, threshold=0.67):
     if frame is None:
@@ -35,9 +36,7 @@ def predict_pipeline(frame, threshold=0.67):
     is_face, image_features = convfacenet.faces_features(PIL_image)
     if is_face == False:
         return [("Waiting", 0)]
-    # print(len(image_features))
-    # if len(image_feature) != 1:
-    #     new_face_feature = image_feature
+
     predicted_results = []
     for image_feature in image_features:
         new_face_feature = image_feature

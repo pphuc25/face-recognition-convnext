@@ -73,11 +73,15 @@ def verify_faces(face1_img, face2_img, threshold=0.5):
 
 def load_descriptor_model_weights(model):
     url = "https://drive.google.com/u/1/uc?id=1sighXzyFufqurh4M4dqB4sNWcTA9PccO&export=download"
-    weights_path = "~/app/model/model_weights/final_weights/face_descriptor.pt"
+    weights_path = "models/final_weights/face_descriptor.pt"
     if not os.path.exists(weights_path):
-        if not os.path.exists("~/app/model/model_weights"):
-            os.mkdir("~/app/model/model_weights")
-        if not os.path.exists("~/app/model/model_weights/final_weights"):
-            os.mkdir("~/app/model/model_weights/final_weights")
+    #     if not os.path.exists(
+    #             "/Users/user/PycharmProjects/FPT code/2023/Summer2023/DPL302m/Multi-Face-Recognize/app/model/model_weights"):
+    #         os.mkdir(
+    #             "/Users/user/PycharmProjects/FPT code/2023/Summer2023/DPL302m/Multi-Face-Recognize/app/model/model_weights")
+    #     if not os.path.exists(
+    #             "/Users/user/PycharmProjects/FPT code/2023/Summer2023/DPL302m/Multi-Face-Recognize/app/model/model_weights/final_weights"):
+    #         os.mkdir(
+    #             "/Users/user/PycharmProjects/FPT code/2023/Summer2023/DPL302m/Multi-Face-Recognize/app/model/model_weights/final_weights")
         gdown.download(url, weights_path, quiet=False)
     model.load_local_weights(weights_path, True)

@@ -1,0 +1,8 @@
+name: process1, Adding new data
+
+new_data:
+  image_path: data/raw/images/dai_phu.jpg
+  name: Dai Phu
+
+save_data_path:
+  processed: data/processed/database.pickle

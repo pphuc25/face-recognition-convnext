@@ -1,0 +1,15 @@
+hydra:
+  output_subdir: null  
+  run:
+    dir: .
+
+defaults:
+  - process: process1
+  - model: model1
+  - _self_
+
+data:
+  raw: 
+  processed: data/processed/database.pickle
+  final: data/final/database.pickle
+

@@ -10,7 +10,7 @@ class FaceDescriptorModel(nn.Module):
     def __init__(self, download_weights=False, output_size=128):
         super().__init__()
 
-        convnext_tiny_model=convnext_tiny(pretrained=download_weights)
+        convnext_tiny_model=convnext_tiny(weights=download_weights)
         self.features=convnext_tiny_model.features
         # Change Full connected layer
         self.classifier = convnext_tiny_model.classifier
